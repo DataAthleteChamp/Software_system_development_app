@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h2>User Management</h2>
+<ul class="user-list">
+    {% for user in users %}
+    <li class="card">
+        <strong>{{ user.name }}</strong> ({{ user.role }})
+        {% if user.role == 'doctor' %}<button onclick="location.href='/admin/view-reports?role=doctor'">View Reports</button>{% endif %}
+        {% if user.role == 'patient' %}<button onclick="location.href='/admin/view-reports?role=patient'">View Reports</button>{% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
